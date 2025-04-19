@@ -3,10 +3,581 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+    <meta name="description" content="Personal portfolio website showcasing my skills, projects, and contact information.">
+    <meta name="keywords" content="portfolio, web developer, projects, skills">
+    <meta name="author" content="Mohammadreza Nourouzpour">
+    <title>Mohammadreza Nourouzpour - Portfolio</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        /* CSS Variables for consistent theming */
+        :root {
+            --primary-color: #1a73e8;
+            --secondary-color: #f4f4f9;
+            --text-color: #333;
+            --accent-color: #ff6f61;
+            --font-family: 'Arial', sans-serif;
+        }
+
+        /* Reset default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Base styles */
+        body {
+            font-family: var(--font-family);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--secondary-color);
+            scroll-behavior: smooth;
+        }
+
+        /* Header with navigation */
+        header {
+            background: linear-gradient(to right, var(--primary-color), #4a90e2);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            margin-top: 1rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover,
+        nav ul li a:focus {
+            background-color: var(--accent-color);
+        }
+
+        /* Main content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero section */
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .hero img {
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border: 5px solid var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .hero img:hover {
+            transform: scale(1.1);
+        }
+
+        .hero-text h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin: 1rem 0;
+        }
+
+        /* About section */
+        #about {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #about h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        #about p {
+            margin-bottom: 1rem;
+        }
+
+        #about details {
+            margin-top: 1rem;
+        }
+
+        #about summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        /* Projects section with CSS Grid */
+        #projects {
+            margin-bottom: 3rem;
+        }
+
+        #projects h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        article {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        article:hover {
+            transform: translateY(-10px);
+        }
+
+        article h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        article p {
+            margin: 1rem 0;
+        }
+
+        article a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        article a:hover {
+            text-decoration: underline;
+        }
+
+        /* Skills section */
+        #skills {
+            margin-bottom: 3rem;
+        }
+
+        #skills h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skills-list span {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Media section */
+        #media {
+            margin-bottom: 3rem;
+        }
+
+        #media h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        #media video,
+        #media audio {
+            width: 100%;
+            max-width: 600px;
+            margin: 1rem 0;
+            border-radius: 10px;
+        }
+
+        /* Contact section */
+        #contact {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #contact h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        label {
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        input,
+        textarea {
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* Aside for testimonials */
+        aside {
+            background-color: #f9f9f9;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        aside h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        aside blockquote {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        aside cite {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Progress bar for skills */
+        progress {
+            width: 100%;
+            height: 20px;
+            margin: 0.5rem 0;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+
+        /* Pseudo-elements for decoration */
+        section::before {
+            content: '';
+            display: block;
+            height: 3px;
+            background: var(--accent-color);
+            width: 50px;
+            margin-bottom: 1rem;
+        }
+
+        /* Media queries for responsiveness */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation for section fade-in */
+        section {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Accessibility enhancements */
+        [aria-hidden="true"] {
+            display: none;
+        }
+
+        :focus {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello, World!</h1>
-    <p>This is my first website hosted with GitHub Pages.</p>
+    <!-- Header with navigation -->
+    <header>
+        <h1>Mohammadreza Nourouzpour</h1>
+        <nav>
+            <ul>
+                <li><a href="#home" aria-label="Go to home section">Home</a></li>
+                <li><a href="#about" aria-label="Go to about section">About</a></li>
+                <li><a href="#projects" aria-label="Go to projects section">Projects</a></li>
+                <li><a href="#skills" aria-label="Go to skills section">Skills</a></li>
+                <li><a href="#contact" aria-label="Go to contact section">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main content -->
+    <main>
+        <!-- Hero section -->
+        <section id="home" class="hero" aria-labelledby="hero-heading">
+            <img src="Mypic.jpg" alt="My profile picture">
+            <div class="hero-text">
+                <h2 id="hero-heading">Welcome to My Portfolio</h2>
+                <p>Hi, I'm Mohammadreza Nourouzpour, a passionate Software engineer creating innovative solutions.</p>
+                <a href="#contact" class="btn">Get in Touch</a>
+            </div>
+        </section>
+
+        <!-- About section -->
+        <section id="about" aria-labelledby="about-heading">
+            <h2 id="about-heading">About Me</h2>
+            <p>I'm a dedicated Computer Engineering student with a passion for building IOT(Intenet of Things) and AI(Artificial Intelligence) enhanced Applications.</p>
+            <p>My expertise includes Python, C/C++, HTML, CSS, JavaScript, and more.</p>
+            <p>I love learning new technologies and applying them to real-world projects.</p>
+            <details>
+                <summary>More About My Journey</summary>
+                <p>I started coding in 2020 and have since worked on numerous projects, from small business websites to complex optical object detection apps.</p>
+            </details>
+        </section>
+
+        <!-- Projects section -->
+        <section id="projects" aria-labelledby="projects-heading">
+            <h2 id="projects-heading">My Projects</h2>
+            <div class="project-grid">
+                <article>
+                    <h3>Project One</h3>
+                    <p>A responsive e-commerce website built with HTML, CSS, and JavaScript.</p>
+                    <a href="#" target="_blank" rel="noopener noreferrer">View Project</a>
+                </article>
+                <article>
+                    <h3>Project Two</h3>
+                    <p>A task management app using React and Node.js.</p>
+                    <a href="#" target="_blank" rel="noopener noreferrer">View Project</a>
+                </article>
+                <article>
+                    <h3>Project Three</h3>
+                    <p>A portfolio website showcasing my design skills.</p>
+                    <a href="#" target="_blank" rel="noopener noreferrer">View Project</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Skills section -->
+        <section id="skills" aria-labelledby="skills-heading">
+            <h2 id="skills-heading">My Skills</h2>
+            <div class="skills-list">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+                <span>React</span>
+                <span>Node.js</span>
+                <span>Python</span>
+            </div>
+            <div>
+                <label for="python-skill">Python Proficiency</label>
+                <progress id="python-skill" value="90" max="100">90%</progress>
+                <label for="cpp-skill">C++ Proficiency</label>
+                <progress id="cpp-skill" value="85" max="100">85%</progress>
+                <label for="html-skill">HTML Proficiency</label>
+                <progress id="html-skill" value="90" max="100">80%</progress>
+                <label for="css-skill">CSS Proficiency</label>
+                <progress id="css-skill" value="85" max="100">70%</progress>
+            </div>
+        </section>
+
+        <!-- Media section -->
+        <section id="media" aria-labelledby="media-heading">
+            <h2 id="media-heading">Media Showcase</h2>
+            <video controls poster="https://via.placeholder.com/600x400">
+                <source src="sample-video.mp4" type="video/mp4">
+                My browser does not support the video tag.
+            </video>
+            <audio controls>
+                <source src="sample-audio.mp3" type="audio/mp3">
+                My browser does not support the audio element.
+            </audio>
+        </section>
+
+        <!-- Contact section -->
+        <section id="contact" aria-labelledby="contact-heading">
+            <h2 id="contact-heading">Contact Me</h2>
+            <form action="#" method="post">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required placeholder="Mohammadreza Nourouzpour">
+                
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="mohammadrezanp1381@gmail.com">
+                
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" placeholder="Subject">
+                
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required placeholder="I'm open for requests."></textarea>
+                
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+
+        <!-- Testimonials aside -->
+        <aside aria-labelledby="testimonials-heading">
+            <h3 id="testimonials-heading">Testimonials</h3>
+            <blockquote>
+                "Your Name delivered an outstanding website for our business. Highly recommended!"
+                <cite>— Client Name</cite>
+            </blockquote>
+        </aside>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Mohammadreza Nourouzpour. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
+            <a href="#" aria-label="GitHub profile"><i class="fab fa-github"></i></a>
+            <a href="#" aria-label="Twitter profile"><i class="fab fa-twitter"></i></a>
+        </div>
+    </footer>
 </body>
 </html>
