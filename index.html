@@ -1,417 +1,408 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Personal portfolio website showcasing my skills, projects, and contact information.">
-    <meta name="keywords" content="portfolio, web developer, projects, skills">
-    <meta name="author" content="Mohammadreza Nourouzpour">
-    <title>Mohammadreza Nourouzpour - Portfolio</title>
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #0ff;
-            --secondary-color: #0a0a0a;
-            --text-color: #ffffff;
-            --accent-color: #ff00ff;
-            --font-family: 'Orbitron', sans-serif;
-            --mono-font: 'Share Tech Mono', monospace;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Personal portfolio website showcasing my skills, projects, and contact information.">
+  <meta name="keywords" content="portfolio, web developer, projects, skills">
+  <meta name="author" content="Mohammadreza Nourouzpour">
+  <title>Mohammadreza Nourouzpour - Portfolio</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <style>
+    :root {
+      --primary-color: #0ff;
+      --secondary-color: #0a0a0a;
+      --text-color: #ffffff;
+      --accent-color: #ff00ff;
+      --font-family: 'Orbitron', sans-serif;
+      --mono-font: 'Share Tech Mono', monospace;
+      --description-font: 'Source Sans Pro', sans-serif;
+    }
 
-        body {
-            font-family: var(--font-family);
-            background-color: var(--secondary-color);
-            color: var(--text-color);
-            scroll-behavior: smooth;
-            background-image: radial-gradient(circle, #111 1px, transparent 1px);
-            background-size: 20px 20px;
-        }
+    body {
+      font-family: var(--font-family);
+      background-color: var(--secondary-color);
+      color: var(--text-color);
+      scroll-behavior: smooth;
+      background-image: radial-gradient(circle, #111 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+    
+    body, p, h1, h2 {
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    }
 
-        header {
-            background: linear-gradient(90deg, #00f2ff, #8f00ff);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 255, 255, 0.4);
-        }
+    header {
+      background: linear-gradient(90deg, #00f2ff, #8f00ff);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 255, 255, 0.4);
+      transform: translateY(0);
+      transition: transform 0.3s ease, opacity 0.4s ease;
+      opacity: 0.25;
+    }
 
-        header h1 {
-            font-size: 3rem;
-            letter-spacing: 3px;
-        }
+    header:hover {
+      opacity: 1;
+    }
 
-        nav ul {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 1rem;
-            list-style: none;
-            flex-wrap: wrap;
-        }
+    header.hide {
+      transform: translateY(-100%);
+    }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--accent-color);
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
+    header h1 {
+      font-size: 2.2rem;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 8px rgba(0, 255, 255, 0.6);
+    }
 
-        nav a:hover {
-            background-color: var(--accent-color);
-            color: #000;
-        }
 
-        main {
-            max-width: 1200px;
-            margin: auto;
-            padding: 2rem;
-        }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--accent-color);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      text-shadow: 0 0 5px #0ff;
+    }
 
-        .hero {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-bottom: 3rem;
-        }
+    nav a:hover {
+      background-color: var(--accent-color);
+      color: #000;
+    }
 
-        .hero img {
-            border-radius: 50%;
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            border: 4px solid var(--accent-color);
-            box-shadow: 0 0 15px var(--accent-color);
-            transition: transform 0.3s ease;
-        }
+    main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 2rem;
+    }
 
-        .hero img:hover {
-            transform: scale(1.1);
-        }
+    .hero img {
+      border-radius: 50%;
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border: 4px solid var(--accent-color);
+      box-shadow: 0 0 15px var(--accent-color);
+      transition: transform 0.3s ease;
+    }
 
-        .hero-text {
-            text-align: center;
-        }
+    .hero img:hover {
+      transform: scale(1.1);
+    }
 
-        .hero-text h2 {
-            font-size: 2.5rem;
-            color: var(--accent-color);
-        }
+    .hero-text h2 {
+      font-size: 2.5rem;
+      color: var(--accent-color);
+    }
 
-        .hero-text p {
-            font-family: var(--mono-font);
-            font-size: 1.2rem;
-            margin-top: 1rem;
-        }
+    .hero-text p, section p, article p, form label, form input, form textarea, footer {
+        font-family: var(--description-font);
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
 
-        .btn {
-            display: inline-block;
-            margin-top: 1.5rem;
-            padding: 0.75rem 1.5rem;
-            background-color: var(--accent-color);
-            color: #000;
-            border-radius: 30px;
-            font-weight: bold;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-        }
 
-        .btn:hover {
-            background-color: #ff99ff;
-        }
+    .btn-custom {
+      margin-top: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--accent-color);
+      color: #000;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
 
-        section {
-            margin-bottom: 3rem;
-            background-color: rgba(255, 255, 255, 0.05);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
-            animation: fadeIn 1s ease forwards;
-        }
+    .btn-custom:hover {
+      background-color: #ff99ff;
+    }
 
-        section h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--accent-color);
-            display: inline-block;
-        }
+    section {
+      margin-bottom: 3rem;
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      scroll-margin-top: 180px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+      animation: fadeIn 1s ease forwards;
+    }
 
-        article {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 1rem;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-            box-shadow: 0 0 10px var(--primary-color);
-        }
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+      border-bottom: 2px solid var(--accent-color);
+      display: inline-block;
+    }
 
-        article:hover {
-            transform: translateY(-10px);
-        }
+    .project-card {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 1rem;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+      box-shadow: 0 0 10px var(--primary-color);
+    }
 
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
+    .project-card:hover {
+      transform: translateY(-10px);
+    }
 
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
+    .skills-list span {
+      background-color: var(--primary-color);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-family: var(--mono-font);
+      font-size: 0.95rem;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
 
-        .skills-list span {
-            background-color: var(--primary-color);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-family: var(--mono-font);
-            font-size: 0.95rem;
-        }
+    progress {
+      width: 100%;
+      height: 15px;
+      background-color: #222;
+      border-radius: 10px;
+    }
 
-        label, progress {
-            display: block;
-            margin-top: 1rem;
-        }
+    progress::-webkit-progress-value {
+      background-color: var(--accent-color);
+    }
 
-        progress {
-            width: 100%;
-            height: 15px;
-            background-color: #222;
-            border-radius: 10px;
-        }
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 0.5rem;
+      background-color: #111;
+      border: 1px solid var(--primary-color);
+      border-radius: 8px;
+      color: white;
+    }
 
-        progress::-webkit-progress-value {
-            background-color: var(--accent-color);
-        }
+    form button {
+      margin-top: 1rem;
+      background-color: var(--accent-color);
+      border: none;
+      color: #000;
+      padding: 0.75rem 1.5rem;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-        form input,
-        form textarea {
-            width: 100%;
-            padding: 0.75rem;
-            margin-top: 0.5rem;
-            background-color: #111;
-            border: 1px solid var(--primary-color);
-            border-radius: 8px;
-            color: white;
-        }
+    form button:hover {
+      background-color: #ff99ff;
+    }
 
-        form button {
-            margin-top: 1rem;
-            background-color: var(--accent-color);
-            border: none;
-            color: #000;
-            padding: 0.75rem 1.5rem;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+    footer {
+      background-color: #000;
+      color: var(--accent-color);
+      text-align: center;
+      padding: 2rem 1rem;
+    }
 
-        form button:hover {
-            background-color: #ff99ff;
-        }
+    .social-links a {
+      color: var(--primary-color);
+      font-size: 1.5rem;
+      margin: 0 0.5rem;
+    }
 
-        footer {
-            background-color: #000;
-            color: var(--accent-color);
-            text-align: center;
-            padding: 2rem 1rem;
-        }
+    .social-links a:hover {
+      color: var(--accent-color);
+    }
 
-        .social-links {
-            margin-top: 1rem;
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
+    @media (max-width: 576px) {
+    header h1 {
+        font-size: 1.8rem;
+      }
+    }
+      
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
 
-        .social-links a {
-            color: var(--primary-color);
-            font-size: 1.5rem;
-        }
-
-        .social-links a:hover {
-            color: var(--accent-color);
-        }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-    </style>
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
+
 <body>
-</html>
-    <!-- Header with navigation -->
-    <header>
-        <h1>Mohammadreza Nourouzpour</h1>
-        <nav>
-            <ul>
-                <li><a href="#home" aria-label="Go to home section">Home</a></li>
-                <li><a href="#about" aria-label="Go to about section">About</a></li>
-                <li><a href="#projects" aria-label="Go to projects section">Projects</a></li>
-                <li><a href="#skills" aria-label="Go to skills section">Skills</a></li>
-                <li><a href="#contact" aria-label="Go to contact section">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <!-- Main content -->
-    <main>
-        <!-- Hero section -->
-        <section id="home" class="hero" aria-labelledby="hero-heading">
-            <img src="Mypic.jpg" alt="My profile picture">
-            <div class="hero-text">
-                <h2 id="hero-heading">Welcome to My Portfolio</h2>
-                <p>Hi, I'm Mohammadreza Nourouzpour, a passionate Software engineer creating innovative solutions.</p>
-                <a href="#contact" class="btn">Get in Touch</a>
+  <!-- Header with navigation -->
+  <header>
+      <h1 class="display-4 display-md-3 display-lg-2">Mohammadreza Nourouzpour</h1>    
+      <nav class="mt-3 d-flex flex-wrap justify-content-center gap-3">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Main content -->
+  <main>
+    <!-- Hero section -->
+    <section class="hero text-center d-flex flex-column flex-md-row align-items-center justify-content-center gap-4">
+      <img src="Mypic.jpg" alt="My profile picture">
+      <div class="hero-text">
+        <h2>Hello, I'm Mohammadreza</h2>
+        <p>Computer Engineer | AI Enthusiast | Web Developer</p>
+        <a href="#contact" class="btn-custom">Contact Me</a>
+      </div>
+    </section>
+
+    <!-- About section -->
+    <section id="about" aria-labelledby="about-heading">
+      <h2 id="about-heading">About Me</h2>
+      <p>I'm a dedicated Computer Engineering student with a passion for building IOT(Intenet of Things) and AI(Artificial Intelligence) enhanced Applications.</p>
+      <p>My expertise includes Python, C/C++, HTML, CSS, JavaScript, and more.</p>
+      <p>I love learning new technologies and applying them to real-world projects.</p>
+      <details>
+          <summary><h2 id="about-heading">More About My Journey</h2></summary>
+          <p>I started coding in 2020 and have since worked on numerous projects, from small business websites to complex optical object detection apps.</p>
+      </details>
+  </section>
+
+    <!-- Projects section -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="row g-3 mt-3">
+        <div class="col-md-6 col-lg-4">
+          <article>
+            <div class="project-card">Project 1 description
+            <p> A responsive e-commerce website built with HTML, CSS, and JavaScript.</p>
+            <a href="#" target="_blank" rel="Hanuz link Nashode">View Project</a>
             </div>
-        </section>
-
-        <!-- About section -->
-        <section id="about" aria-labelledby="about-heading">
-            <h2 id="about-heading">About Me</h2>
-            <p>I'm a dedicated Computer Engineering student with a passion for building IOT(Intenet of Things) and AI(Artificial Intelligence) enhanced Applications.</p>
-            <p>My expertise includes Python, C/C++, HTML, CSS, JavaScript, and more.</p>
-            <p>I love learning new technologies and applying them to real-world projects.</p>
-            <details>
-                <summary>More About My Journey</summary>
-                <p>I started coding in 2020 and have since worked on numerous projects, from small business websites to complex optical object detection apps.</p>
-            </details>
-        </section>
-
-        <!-- Projects section -->
-        <section id="projects" aria-labelledby="projects-heading">
-            <h2 id="projects-heading">My Projects</h2>
-            <div class="project-grid">
-                <article>
-                    <h3>Project One</h3>
-                    <p>A responsive e-commerce website built with HTML, CSS, and JavaScript.</p>
-                    <a href="#" target="_blank" rel="noopener noreferrer">View Project</a>
-                </article>
-                <article>
-                    <h3>Project Two</h3>
-                    <p>A task management app using React and Node.js.</p>
-                    <a href="#" target="_blank" rel="noopener noreferrer">View Project</a>
-                </article>
-                <article>
-                    <h3>Project Three</h3>
-                    <p>A portfolio website showcasing my design skills.</p>
-                    <a href="#" target="_blank" rel="noopener noreferrer">View Project</a>
-                </article>
-            </div>
-        </section>
-
-        <!-- Skills section -->
-        <section id="skills" aria-labelledby="skills-heading">
-            <h2 id="skills-heading">My Skills</h2>
-            <div class="skills-list">
-                <span>Python</span>
-                <span>C/C++</span>
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
-                <span>React</span>
-                <span>Node.js</span>
-            </div>
-            <div>
-                <label for="python-skill">Python Proficiency</label>
-                <progress id="python-skill" value="90" max="100">90%</progress>
-                <label for="cpp-skill">C/C++ Proficiency</label>
-                <progress id="cpp-skill" value="85" max="100">85%</progress>
-                <label for="html-skill">HTML Proficiency</label>
-                <progress id="html-skill" value="70" max="100">70%</progress>
-                <label for="css-skill">CSS Proficiency</label>
-                <progress id="css-skill" value="70" max="100">70%</progress>
-                <label for="Javascript-skill">JavaScript Proficiency</label>
-                <progress id="Javascript-skill" value="50" max="100">50%</progress>
-                <label for="React-skill">React Proficiency</label>
-                <progress id="React-skill" value="35" max="100">35%</progress>
-                <label for="Node.js-skill">Node.js Proficiency</label>
-                <progress id="Node.js-skill" value="50" max="100">50%</progress>
-            </div>
-        </section>
-
-        <!-- Media section -->
-        <section id="media" aria-labelledby="media-heading">
-            <h2 id="media-heading">Media Showcase</h2>
-            <video controls poster="https://via.placeholder.com/600x400">
-                <source src="sample-video.mp4" type="video/mp4">
-                My browser does not support the video tag.
-            </video>
-            <audio controls>
-                <source src="sample-audio.mp3" type="audio/mp3">
-                My browser does not support the audio element.
-            </audio>
-        </section>
-
-        <!-- Contact section -->
-        <section id="contact" aria-labelledby="contact-heading">
-            <h2 id="contact-heading">Contact Me</h2>
-            <form action="#" method="post">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required placeholder="Mohammadreza Nourouzpour">
-                
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required placeholder="mohammadrezanp1381@gmail.com">
-                
-                <label for="subject">Subject</label>
-                <input type="text" id="subject" name="subject" placeholder="Subject">
-                
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="5" required placeholder="I'm open for requests."></textarea>
-                
-                <button type="submit">Send Message</button>
-            </form>
-        </section>
-
-        <!-- Testimonials aside -->
-        <aside aria-labelledby="testimonials-heading">
-            <h3 id="testimonials-heading">Testimonials</h3>
-            <blockquote>
-                "Mohammadreza Nourouozpour delivered an outstanding website for our business. Highly recommended!"
-                <cite>— Razi University</cite>
-            </blockquote>
-        </aside>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Mohammadreza Nourouzpour. All rights reserved.</p>
-        <div class="social-links">
-            <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
-            <a href="#" aria-label="GitHub profile"><i class="fab fa-github"></i></a>
-            <a href="#" aria-label="Twitter profile"><i class="fab fa-twitter"></i></a>
+          </article>
         </div>
-    </footer>
+        <div class="col-md-6 col-lg-4">
+          <article>
+            <div class="project-card">Project 2 description
+            <p> A task management app using React and Node.js.</p>
+            <a href="#" target="_blank" rel="Hanuz link Nashode">View Project</a>
+            </div>
+          </article>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <article>
+            <div class="project-card">Project 3 description
+            <p> A portfolio website showcasing my design skills.</p>
+            <a href="#" target="_blank" rel="Hanuz link Nashode">View Project</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills section -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills-list d-flex flex-wrap gap-2 mt-3">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>JavaScript</span>
+        <span>Python</span>
+        <span>AI</span>
+      </div>
+      <div>
+        <label for="python-skill">Python Proficiency</label>
+        <progress id="python-skill" value="90" max="100">90%</progress>
+        <label for="cpp-skill">C/C++ Proficiency</label>
+        <progress id="cpp-skill" value="85" max="100">85%</progress>
+        <label for="html-skill">HTML Proficiency</label>
+        <progress id="html-skill" value="70" max="100">70%</progress>
+        <label for="css-skill">CSS Proficiency</label>
+        <progress id="css-skill" value="70" max="100">70%</progress>
+        <label for="Javascript-skill">JavaScript Proficiency</label>
+        <progress id="Javascript-skill" value="50" max="100">50%</progress>
+        <label for="React-skill">React Proficiency</label>
+        <progress id="React-skill" value="35" max="100">35%</progress>
+        <label for="Node.js-skill">Node.js Proficiency</label>
+        <progress id="Node.js-skill" value="50" max="100">50%</progress>
+    </div>
+    </section>
+
+    <!-- Media section -->
+    <section id="media" aria-labelledby="media-heading">
+      <h2 id="media-heading">Media Showcase</h2>
+      <video controls poster="https://via.placeholder.com/600x400">
+          <source src="sample-video.mp4" type="video/mp4">
+          My browser does not support the video tag.
+      </video>
+      <audio controls>
+          <source src="sample-audio.mp3" type="audio/mp3">
+          My browser does not support the audio element.
+      </audio>
+    </section>
+
+    <!-- Contact section -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="4" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+
+
+    <!-- Testimonials aside -->
+    <aside aria-labelledby="testimonials-heading">
+      <h2 id="testimonials-heading">Testimonials</h2>
+      <blockquote>
+          "Mohammadreza Nourouozpour delivered an outstanding website for our business. Highly recommended!"
+          <cite>— Razi University</cite>
+      </blockquote>
+    </aside>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Mohammadreza Nourouzpour</p>
+    <div class="social-links">
+      <a href="#"><i class="fab fa-github"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // baraye hide kardan title moghe scroll 
+    let lastScrollY = window.scrollY;
+    const header = document.querySelector('header');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY < lastScrollY) {
+          // scrolling up
+          header.classList.remove('hide');
+      } else {
+          // scrolling down
+          header.classList.add('hide');
+      }
+      lastScrollY = window.scrollY;
+    });
+  </script>
 </body>
 </html>
